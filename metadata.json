@@ -1,7 +1,7 @@
 {
   "name": "ORWYTH Portfolio",
   "description": "Personal portfolio for ORWYTH featuring Software, OSINT, and Systems development with a premium dark technological aesthetic.",
-  "url": "https://orwyth.vercel.com/",
+  "url": "https://orwyth.vercel.app/",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
