@@ -56,7 +56,10 @@ export function Footer() {
         {/* Monumental Logo - Clash Display Bold with metallic depth */}
         <div className="relative mb-[-3vw] sm:mb-[-4vw] pt-6 pb-2 pointer-events-none overflow-visible">
           <h1 
-            style={{ fontFamily: "'Clash Display', sans-serif" }}
+            style={{ 
+              fontFamily: "'Clash Display', 'ClashDisplay-Variable', 'ClashDisplay', sans-serif",
+              fontWeight: 700 
+            }}
             className="text-[clamp(90px,20vw,300px)] leading-[0.9] tracking-[0.025em] font-bold select-none text-center bg-gradient-to-b from-white/25 via-white/10 to-transparent bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(255,255,255,0.05)] pt-2 pb-4"
           >
             Orwyth
