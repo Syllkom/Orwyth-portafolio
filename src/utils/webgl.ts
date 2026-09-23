@@ -1,15 +1,16 @@
+/**
+ * Utility to safely detect WebGL capabilities before initializing canvas shaders.
+ * Prevents runtime errors in environments where WebGL/hardware acceleration is disabled.
+ */
 export function isWebGLAvailable(): boolean {
-  if (typeof window === "undefined" || typeof document === "undefined") {
-    return false;
-  }
-
+  if (typeof window === "undefined") return false;
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(
-      canvas.getContext("webgl2") ||
-        canvas.getContext("webgl") ||
-        canvas.getContext("experimental-webgl")
-    );
+    const gl = 
+      canvas.getContext("webgl2") || 
+      canvas.getContext("webgl") || 
+      canvas.getContext("experimental-webgl");
+    return Boolean(gl);
   } catch {
     return false;
   }
