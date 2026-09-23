@@ -494,93 +494,207 @@ function IpcNode({ className = "" }: { className?: string }) {
   );
 }
 
-export function AetheroArchitectureVisual() {
+// =========================================================================
+// 01. BAILEYS-IPC BLUEPRINT VISUAL (Section 01 / Destacados)
+// High-contrast CSS chassis + traveling SVG laser conduits & SQLite WAL
+// =========================================================================
+export function BaileysIpcVisual() {
   return (
-    <div className="relative w-full h-full min-h-[300px] md:min-h-[380px] flex items-center justify-center p-1 sm:p-4 select-none overflow-hidden">
-      {/* Background architectural blueprint grid & static concentric telemetry rings */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-        <div className="w-[280px] sm:w-[380px] md:w-[480px] h-[280px] sm:h-[380px] md:h-[480px] rounded-full border border-white/[0.04] pointer-events-none" />
-        <div className="w-[180px] sm:w-[260px] md:w-[320px] h-[180px] sm:h-[260px] md:h-[320px] rounded-full border border-white/[0.07] border-dashed pointer-events-none" />
-      </div>
-
-      {/* MOBILE / TABLET FLOW (< md): Perfectly centered vertical architectural hierarchy */}
-      <div className="relative w-full max-w-[320px] sm:max-w-[360px] mx-auto flex flex-col items-center gap-2 py-2 md:hidden z-10">
-        {/* Top: Scheduler */}
-        <SchedulerNode className="w-full" />
-
-        {/* Vertical connector line */}
-        <div className="w-px h-3 bg-white/20" />
-
-        {/* Center: Aethero Core */}
-        <CoreNode className="w-full max-w-[190px]" />
-
-        {/* Vertical connector line */}
-        <div className="w-px h-3 bg-white/20" />
-
-        {/* Flanking Satellite Nodes in 2 balanced columns */}
-        <div className="grid grid-cols-2 gap-2 w-full">
-          <EventBusNode />
-          <SandboxNode />
-        </div>
-
-        {/* Vertical connector line */}
-        <div className="w-px h-3 bg-white/20" />
-
-        {/* Bottom: IPC Bridge */}
-        <IpcNode className="w-full" />
-      </div>
-
-      {/* DESKTOP SPATIAL CANVAS (>= md): Static, pristine architectural vector network */}
-      <div className="relative w-full max-w-[760px] h-[360px] hidden md:block select-none z-10">
-        {/* Main Vector Schematic Traces (Clean, static, crisp - no moving beam animations) */}
+    <div className="relative w-full flex items-end justify-end select-none p-2 sm:p-3" style={{ contain: "paint" }}>
+      {/* High-tech Chassis Window */}
+      <div className="relative w-full max-w-[440px] border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col justify-between font-mono text-[11px] bg-[#09090c] shadow-2xl overflow-hidden">
+        {/* Traveling light beam on outer perimeter */}
         <svg 
-          viewBox="0 0 800 360" 
-          className="absolute inset-0 w-full h-full select-none pointer-events-none z-0"
+          className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible" 
+          aria-hidden="true"
         >
-          {/* Central pipelines connecting to Core (center at 400, 180) */}
-          <path d="M 220 180 L 320 180" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <path d="M 480 180 L 580 180" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <path d="M 400 70 L 400 130" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <path d="M 400 230 L 400 290" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="3 3" />
-
-          {/* Diagonal telemetry bus lines */}
-          <path d="M 210 135 L 340 165" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          <path d="M 590 135 L 460 165" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          <path d="M 210 225 L 340 195" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          <path d="M 590 225 L 460 195" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-
-          {/* Static telemetry nodes */}
-          <circle cx="270" cy="180" r="3" fill="#ffffff" fillOpacity="0.8" />
-          <circle cx="530" cy="180" r="3" fill="#d7d7d9" fillOpacity="0.8" />
-          <circle cx="400" cy="100" r="3" fill="#34d399" fillOpacity="0.8" />
-          <circle cx="400" cy="260" r="3" fill="#ffffff" fillOpacity="0.8" />
+          <rect
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            rx="16"
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.75)"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            pathLength="100"
+            strokeDasharray="16 84"
+            className="animate-trace-beam"
+          />
         </svg>
 
-        {/* Top Node: Task Scheduler & Event Loop */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-fit">
-          <SchedulerNode />
+        {/* Chassis Header */}
+        <div className="relative flex justify-between items-center pb-2.5 mb-3 border-b border-white/10">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+            <span className="text-white font-medium text-xs tracking-wider">IPC // THREAD PIPELINE</span>
+          </div>
+          <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 text-[9px] border border-emerald-500/30">
+            V8 ISOLATE
+          </span>
+          {/* Scanning divider line */}
+          <div className="absolute bottom-0 left-0 w-full h-px bg-white/10 overflow-hidden">
+            <div className="w-24 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent animate-scan-divider" />
+          </div>
         </div>
 
-        {/* Left Node: Zero-Copy EventBus */}
-        <div className="absolute left-2 lg:left-6 top-1/2 -translate-y-1/2 w-[160px] lg:w-[185px]">
-          <EventBusNode />
+        {/* Central Dataflow Diagram */}
+        <div className="relative my-2 py-2 grid grid-cols-[1fr_auto_1.2fr] gap-2 items-center">
+          
+          {/* Main Thread Box */}
+          <div className="rounded-xl border border-white/15 bg-white/[0.03] p-2.5 text-center flex flex-col justify-center">
+            <span className="text-[9px] text-silver/70 font-semibold mb-0.5">MAIN THREAD</span>
+            <span className="text-white font-medium text-[11px] truncate">IPCProxy</span>
+            <span className="text-[8px] text-emerald-400 mt-1">NON-BLOCKING</span>
+          </div>
+
+          {/* Animated Connecting IPC Pipe with Laser Beams */}
+          <div className="relative w-12 sm:w-16 h-12 flex items-center justify-center">
+            <svg viewBox="0 0 60 30" className="w-full h-full overflow-visible">
+              <line x1="0" y1="15" x2="60" y2="15" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="3 3" />
+              {/* Forward beam */}
+              <line 
+                x1="0" y1="11" x2="60" y2="11" 
+                stroke="rgba(52, 211, 153, 0.9)" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                pathLength="100" 
+                strokeDasharray="25 75" 
+                className="animate-trace-beam" 
+              />
+              {/* Backward stream beam */}
+              <line 
+                x1="60" y1="19" x2="0" y2="19" 
+                stroke="rgba(255, 255, 255, 0.85)" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                pathLength="100" 
+                strokeDasharray="25 75" 
+                className="animate-trace-beam-inner" 
+              />
+            </svg>
+            <span className="absolute -bottom-1 text-[8px] text-silver/80 font-mono scale-90">STREAM</span>
+          </div>
+
+          {/* Worker Thread + SQLite Box */}
+          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-2.5 text-left">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[9px] text-emerald-300 font-semibold">WORKER THREAD</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            </div>
+            <div className="text-white font-medium text-[11px] truncate mb-1">Baileys Socket</div>
+            <div className="pt-1 border-t border-white/10 flex justify-between items-center text-[8px] text-silver/80">
+              <span>SQLITE WAL</span>
+              <span className="text-white font-medium">SYNC</span>
+            </div>
+          </div>
+
         </div>
 
-        {/* Center Monumental Node: Aethero Core Engine */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] lg:w-[185px] z-10">
-          <CoreNode />
+        {/* Footer Metrics with Scan line */}
+        <div className="relative flex justify-between items-center text-[9px] text-silver/70 pt-2.5 mt-2 border-t border-white/10">
+          <div className="absolute top-0 left-0 w-full h-px bg-white/10 overflow-hidden">
+            <div 
+              className="w-24 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent animate-scan-divider" 
+              style={{ animationDelay: '1.5s' }}
+            />
+          </div>
+          <span>TRANSFER: <strong className="text-white">ARRAYBUFFER</strong></span>
+          <span className="text-emerald-400 font-medium">AUTO-RESTART: 5s</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// =========================================================================
+// 02. AETHERO FRAMEWORK BLUEPRINT VISUAL (Section 01 / Destacados)
+// High-contrast CSS kernel chassis + radial event matrix & scheduler
+// =========================================================================
+export function AetheroArchitectureVisual() {
+  return (
+    <div className="relative w-full flex items-end justify-end select-none p-2 sm:p-3" style={{ contain: "paint" }}>
+      {/* High-tech Chassis Window */}
+      <div className="relative w-full max-w-[440px] border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col justify-between font-mono text-[11px] bg-[#09090c] shadow-2xl overflow-hidden">
+        {/* Traveling light beam on outer perimeter */}
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible" 
+          aria-hidden="true"
+        >
+          <rect
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            rx="16"
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.75)"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            pathLength="100"
+            strokeDasharray="16 84"
+            className="animate-trace-beam"
+          />
+        </svg>
+
+        {/* Chassis Header */}
+        <div className="relative flex justify-between items-center pb-2.5 mb-3 border-b border-white/10">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+            <span className="text-white font-medium text-xs tracking-wider">AETHERO // EVENT KERNEL</span>
+          </div>
+          <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[9px] border border-white/20">
+            CORE v2.4
+          </span>
+          {/* Scanning divider line */}
+          <div className="absolute bottom-0 left-0 w-full h-px bg-white/10 overflow-hidden">
+            <div className="w-24 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent animate-scan-divider" />
+          </div>
         </div>
 
-        {/* Right Node: Sandbox Process Arena */}
-        <div className="absolute right-2 lg:right-6 top-1/2 -translate-y-1/2 w-[160px] lg:w-[185px]">
-          <SandboxNode />
+        {/* Modular Grid Hub */}
+        <div className="relative my-2 py-1 grid grid-cols-3 gap-2 items-center">
+          
+          {/* Left Node: EventBus */}
+          <div className="rounded-xl border border-white/15 bg-white/[0.03] p-2 text-center">
+            <span className="text-[8px] text-silver/70 block">EVENT-BUS</span>
+            <span className="text-white font-medium text-[10px]">Zero-Copy</span>
+            <div className="w-full h-1 bg-white/10 rounded mt-1 overflow-hidden">
+              <div className="w-4/5 h-full bg-white/70" />
+            </div>
+          </div>
+
+          {/* Center Monumental Node: Aethero Core */}
+          <div className="rounded-xl border border-white/25 bg-white/[0.08] p-2.5 text-center relative shadow-lg">
+            <div className="w-5 h-5 rounded-md border border-white/30 bg-white/10 mx-auto mb-1 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            </div>
+            <span className="text-white font-semibold text-[10px] block">AETHERO</span>
+            <span className="text-[8px] text-emerald-400">DISPATCHER</span>
+          </div>
+
+          {/* Right Node: App Bridge */}
+          <div className="rounded-xl border border-white/15 bg-white/[0.03] p-2 text-center">
+            <span className="text-[8px] text-silver/70 block">COMPANION</span>
+            <span className="text-white font-medium text-[10px]">Aethero-App</span>
+            <div className="w-full h-1 bg-white/10 rounded mt-1 overflow-hidden">
+              <div className="w-full h-full bg-emerald-400/80" />
+            </div>
+          </div>
+
         </div>
 
-        {/* Bottom Node: Client Companion Bridge (Aethero-App) */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-fit">
-          <IpcNode />
+        {/* Footer Metrics with Scan line */}
+        <div className="relative flex justify-between items-center text-[9px] text-silver/70 pt-2.5 mt-2 border-t border-white/10">
+          <div className="absolute top-0 left-0 w-full h-px bg-white/10 overflow-hidden">
+            <div 
+              className="w-24 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent animate-scan-divider" 
+              style={{ animationDelay: '2s' }}
+            />
+          </div>
+          <span>SCHEDULER: <strong className="text-white">60 FPS ARENA</strong></span>
+          <span className="text-white/90 font-medium">PLUGINS: MODULAR</span>
         </div>
       </div>
     </div>

@@ -199,17 +199,6 @@ export function Contact() {
           </form>
         </motion.div>
 
-        {/* Clean Direct Access Links */}
-        <div className="flex items-center justify-center gap-6 mt-12 text-xs font-mono text-graphite">
-          <a href="https://github.com/Syllkom" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-            GitHub ↗
-          </a>
-          <span className="text-white/10 select-none">•</span>
-          <a href="mailto:orwyth@mail.ru" className="hover:text-white transition-colors">
-            orwyth@mail.ru ↗
-          </a>
-        </div>
-
       </div>
     </section>
   );

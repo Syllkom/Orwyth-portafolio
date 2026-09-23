@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { SectionHeader } from "./SectionHeader";
 
@@ -188,6 +189,43 @@ function CardEdgeGlow({ glow }: CardEdgeGlowProps) {
   return null;
 }
 
+function ProjectImageScreen({ src, alt }: { src: string; alt: string; name?: string }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div 
+      className="relative w-full h-[180px] rounded-[10px] border border-[#242424] overflow-hidden bg-[#111114] z-10"
+      style={{
+        boxShadow: "inset 0 0 25px rgba(255,255,255,.012)"
+      }}
+    >
+      {/* Classic Clean Skeleton Placeholder */}
+      {!isLoaded && (
+        <div className="absolute inset-0 z-10 bg-[#121215] overflow-hidden">
+          {/* Subtle Skeleton Pulse & Shimmer */}
+          <div className="w-full h-full animate-pulse bg-white/[0.03]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent -translate-x-full animate-shimmer" />
+        </div>
+      )}
+
+      {/* Actual Project Image with Smooth Fade-in */}
+      <img 
+        src={src} 
+        alt={alt}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onLoad={() => setIsLoaded(true)}
+        className={`w-full h-full object-cover object-center transform group-hover:scale-105 transition-all duration-500 ease-out ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      {/* Ambient shadow gradient at bottom of viewer */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+    </div>
+  );
+}
+
 export function Projects() {
   return (
     <section id="projects" className="py-24 md:py-32 relative">
@@ -232,23 +270,12 @@ export function Projects() {
                   <CardEdgeGlow key={`${glow.side}-${idx}`} glow={glow} />
                 ))}
 
-                {/* .screen: Recuadro superior fiel al diseño original */}
-                <div 
-                  className="relative w-full h-[180px] rounded-[10px] border border-[#242424] overflow-hidden bg-[#0b0b0b] z-10"
-                  style={{
-                    boxShadow: "inset 0 0 25px rgba(255,255,255,.012)"
-                  }}
-                >
-                  <img 
-                    src={proj.image} 
-                    alt={`Banner de ${proj.name}`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  {/* Sombra suave en la base del visor */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                </div>
+                {/* .screen: Recuadro superior con animación HUD cybernetic placeholder */}
+                <ProjectImageScreen 
+                  src={proj.image} 
+                  alt={`Banner de ${proj.name}`}
+                  name={proj.name}
+                />
 
                 {/* .info: Contenedor flotante inferior según el diseño fiel original */}
                 <div 

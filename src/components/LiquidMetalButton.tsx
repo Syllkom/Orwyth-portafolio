@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { liquidMetalFragmentShader, ShaderMount } from "@paper-design/shaders";
+import { isWebGLAvailable } from "../utils/webgl";
 
 interface LiquidMetalButtonProps {
   label?: string;
@@ -21,6 +22,10 @@ export function LiquidMetalButton({
     const container = shaderContainerRef.current;
     const button = buttonRef.current;
     if (!container || !button) return;
+
+    if (!isWebGLAvailable()) {
+      return;
+    }
 
     let shader: ShaderMount | null = null;
     try {
@@ -64,8 +69,8 @@ export function LiquidMetalButton({
         }
       };
       shader.setSpeed(0.6);
-    } catch (err) {
-      console.error("Error initializing ShaderMount:", err);
+    } catch {
+      // Graceful WebGL fallback
     }
 
     const handleMouseEnter = () => {

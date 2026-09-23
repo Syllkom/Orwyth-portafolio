@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { liquidMetalFragmentShader, ShaderMount } from "@paper-design/shaders";
 import { motion } from "motion/react";
+import { isWebGLAvailable } from "../utils/webgl";
 
 const navItems = [
   { id: "about", label: "SOBRE MÍ", href: "#about" },
@@ -18,6 +19,10 @@ export function LiquidNavPill() {
     const container = shaderWrapperRef.current;
     const pill = containerRef.current;
     if (!container || !pill) return;
+
+    if (!isWebGLAvailable()) {
+      return;
+    }
 
     let shader: ShaderMount | null = null;
     try {
@@ -61,8 +66,8 @@ export function LiquidNavPill() {
         }
       };
       shader.setSpeed(0.6);
-    } catch (err) {
-      console.error("Error initializing LiquidNavPill ShaderMount:", err);
+    } catch {
+      // Graceful WebGL fallback
     }
 
     const handleMouseEnter = () => {
