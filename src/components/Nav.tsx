@@ -41,8 +41,8 @@ export function Nav() {
             </a>
           </div>
           
-          {/* Navigation links inside Liquid Metal Pill - Hidden on mobile/tablets */}
-          <div className="hidden lg:flex justify-center">
+          {/* Navigation links inside Liquid Metal Pill */}
+          <div className="hidden md:flex justify-center">
             <LiquidNavPill />
           </div>
 
