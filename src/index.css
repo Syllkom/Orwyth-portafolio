@@ -134,6 +134,15 @@
   100% { transform: translateY(48px); opacity: 0.2; }
 }
 
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+.animate-shimmer {
+  animation: shimmer-sweep 2.4s infinite ease-in-out;
+}
+
 .animate-slow-spin {
   animation: slow-spin 40s linear infinite;
   will-change: transform;
